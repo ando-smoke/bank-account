@@ -26,33 +26,41 @@ $(document).ready(function() {
       $("#withdraw-form").show();
       $("#balance-field").show();
 
-      $(".balance").text(myBankAccount.balance);
+      $(".balance").text("$" + myBankAccount.balance.toFixed(2));
     } else {
-      alert("Please Enter a Initial Deposit")
+      alert("Please Enter a Initial Deposit");
+      $("input#initial-deposit").val("");
     }
   });
 
   $("form#deposit-form").submit(function(event) {
     event.preventDefault();
+    var newDeposit = parseFloat($("input#deposit").val())
 
-    myBankAccount.deposit(
-      parseFloat($("input#deposit").val()));
+    if (newDeposit) {
+      myBankAccount.deposit(newDeposit);
+      $(".balance").text("$" + myBankAccount.balance.toFixed(2));
+    }
+    else {
+      alert("Please add a valid dollar amount");
+    }
 
     $("input#deposit").val("");
-
-    $(".balance").text(myBankAccount.balance);
   });
 
   $("form#withdraw-form").submit(function(event){
     event.preventDefault();
+    var newWithdraw = parseFloat($("input#withdraw").val())
 
-    myBankAccount.withdraw(
-      parseFloat($("input#withdraw").val()));
+    if (newWithdraw) {
+      myBankAccount.withdraw(newWithdraw);
+      $(".balance").text("$" + myBankAccount.balance.toFixed(2));
+    }
+    else {
+      alert("Please add a valid dollar amount");
+    }
 
     $("input#withdraw").val("");
-
-    $(".balance").text(myBankAccount.balance);
-
   });
 
 });
