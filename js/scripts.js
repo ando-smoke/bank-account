@@ -15,15 +15,21 @@ $(document).ready(function() {
     event.preventDefault();
 
     myBankAccount.name = $("input#name").val();
-    myBankAccount.deposit(
-      parseFloat($("input#initial-deposit").val()));
+    var initialDeposit = parseFloat($("input#initial-deposit").val());
 
-    $("#new-account").hide();
-    $("#deposit-form").show();
-    $("#withdraw-form").show();
-    $("#balance-field").show();
+    if(initialDeposit){
 
-    $(".balance").text(myBankAccount.balance);
+      myBankAccount.deposit(initialDeposit);
+
+      $("#new-account").hide();
+      $("#deposit-form").show();
+      $("#withdraw-form").show();
+      $("#balance-field").show();
+
+      $(".balance").text(myBankAccount.balance);
+    } else {
+      alert("Please Enter a Initial Deposit")
+    }
   });
 
   $("form#deposit-form").submit(function(event) {
@@ -32,6 +38,21 @@ $(document).ready(function() {
     myBankAccount.deposit(
       parseFloat($("input#deposit").val()));
 
+    $("input#deposit").val("");
+
     $(".balance").text(myBankAccount.balance);
   });
+
+  $("form#withdraw-form").submit(function(event){
+    event.preventDefault();
+
+    myBankAccount.withdraw(
+      parseFloat($("input#withdraw").val()));
+
+    $("input#withdraw").val("");
+
+    $(".balance").text(myBankAccount.balance);
+
+  });
+
 });
