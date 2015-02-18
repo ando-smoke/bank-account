@@ -23,22 +23,28 @@
 
             <div class="form-group">
               <label for="initial-deposit">Initial Deposit</label>
-              <input id="initial-deposit" class="form-control">
+              <input id="initial-deposit" class="form-control" type="text">
             </div>
 
             <button type="submit" class="btn btn-primary">Create Account</button>
           </form>
 
-          <form id="deposit-withdraw">
+          <form id="deposit-form">
             <div class="form-group">
               <label for="deposit">Deposit Amount</label>
               <input id="deposit" class="form-control" type="text">
             </div>
 
+            <button type="submit" class="btn btn-warning">Deposit</button>
+          </form><br />
+
+          <form id="withdraw-form">
             <div class="form-group">
               <label for="withdraw">Withdraw Amount</label>
-              <input id="withdraw" class="form-control">
+              <input id="withdraw" class="form-control" type="text">
             </div>
+
+            <button type="submit" class="btn btn-warning">Withdraw</button>
           </form>
         </div>
 
@@ -46,9 +52,7 @@
           <h3>Your Account Balance</h3>
           <h4 class="balance"></h4>
         </div>
-
       </div>
-
     </div>
   </body>
 </html>
